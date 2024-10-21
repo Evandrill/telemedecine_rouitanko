@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const { allDatabaseConnections } = require('../config/database'); // Import allDatabaseConnections
 const signinSchema = require('../zodValidation/signinSchema');
 const validate = require('../middlewares/signinValidation');
-const { Router } = require("express");
+const { Router, response} = require("express");
 const router = Router();
 
 const SECRET_KEY = "00000000";
@@ -60,5 +60,44 @@ router.post('/', validate(signinSchema), async (req, res) => {
         });
     }
 });
+
+//ADMIN LOGIN ---
+const loginAdmin = async (req, res) => {
+
+    try {
+
+        const {email, password} = req.body;
+
+        if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
+
+            const token = jwt.sign(email + password, process.env.JWT_SECRET);
+            res.json({
+                success: true,
+                token,
+            })
+
+        } else {
+            res.status(501).json({
+                success: false,
+                message: "Invalid Credentials..",
+            });
+        }
+
+    } catch (error) {
+        console.log(error);
+        res.status(501).json({
+            success: false,
+            message: error.message,
+        });
+    }
+
+}
+
+
+router.post("/admin-login", loginAdmin);
+
+
+
+
 
 module.exports = router;
