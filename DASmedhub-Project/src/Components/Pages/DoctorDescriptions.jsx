@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../Contexts/AppContext.jsx";
-import { assets } from "../../../public/assets_frontend/assets.js";
+import { assets } from "../../assets/assets_frontend/assets.js";
 import { Button } from "@material-tailwind/react";
 import Navbar from "../Navbar.jsx";
 import RelatedDoctors from "../Specialist/RelatedDoctors.jsx";

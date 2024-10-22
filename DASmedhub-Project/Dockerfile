@@ -12,6 +12,6 @@ COPY . .
 
 RUN npm run build
 
-EXPOSE 5200
+EXPOSE 5173
 
-CMD [ "serve", "-s", "dist", "--listen", "5200" ]
+CMD [ "serve", "-s", "dist", "--listen", "5173" ]

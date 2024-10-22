@@ -1,4 +1,17 @@
-FROM ubuntu:latest
-LABEL authors="MEGATRON"
+FROM node:20-alpine
 
-ENTRYPOINT ["top", "-b"]
+WORKDIR /app
+
+COPY package.json .
+
+RUN npm install
+
+RUN npm i -g serve
+
+COPY . .
+
+RUN npm run build
+
+EXPOSE 5200
+
+CMD [ "serve", "-s", "dist", "--listen", "5200" ]

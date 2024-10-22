@@ -1,5 +1,5 @@
 import {createContext} from "react";
-import {doctors} from "../../../public/assets_frontend/assets.js";
+import {doctors} from "../../assets/assets_frontend/assets.js";
 
 
 

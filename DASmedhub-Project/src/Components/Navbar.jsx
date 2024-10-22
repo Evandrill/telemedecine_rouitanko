@@ -6,7 +6,7 @@ import {
     Collapse,
 } from "@material-tailwind/react";
 import {NavLink, useNavigate} from "react-router-dom";
-import {assets} from "../../public/assets_frontend/assets.js";
+import {assets} from "../assets/assets_frontend/assets.js";
 
 function StickyNavbar() {
     const [openNav, setOpenNav] = useState(false);
@@ -53,7 +53,7 @@ function StickyNavbar() {
                 <p>About us</p>
             </NavLink>
             <NavLink
-                to={"http://localhost:3000/"}
+                to={"https://dasmedhubblog.vercel.app/"}
                 className="p-1 text-xl font-medium text-gray-600"
             >
                 <p>Blog</p>

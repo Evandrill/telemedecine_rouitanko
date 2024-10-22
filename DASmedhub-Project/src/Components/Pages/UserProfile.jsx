@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { assets } from "../../../public/assets_frontend/assets.js";
+import { assets } from "../../assets/assets_frontend/assets.js";
 import { Button } from "@material-tailwind/react";
 import Navbar from "../Navbar.jsx";
 
