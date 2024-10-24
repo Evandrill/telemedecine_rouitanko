@@ -35,7 +35,7 @@ const PlatformInfoHome = () => {
                         />
                         <Step
                             number="2"
-                            title="Choose Your Service"
+                            title="Choose Your Services"
                             description="Select from our range of services and book a consultation. Booking a consultation with HealNet is fairly simple and straightforward."
                         />
                         <Step

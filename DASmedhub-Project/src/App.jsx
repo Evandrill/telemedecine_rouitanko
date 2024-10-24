@@ -12,6 +12,8 @@ import NearbyHospitalLocator from "./Components/Pages/NearbyHospitalLocator.jsx"
 import ProfileForm from "./Components/Pages/UserBasicDetails.jsx";
 import DoctorDescriptions from "./Components/Pages/DoctorDescriptions.jsx";
 import AllSpecialist from "./Components/Pages/AllSpecialist.jsx";
+import Services from "./Components/Pages/Services.jsx";
+import MedhubChatbot from "./Components/User/MedhubChatbot.jsx";
 
 function App() {
     return (
@@ -23,6 +25,8 @@ function App() {
                     <Route exact path="/Patient-login" element={<PatientLogin/>} />
                     <Route exact path="/Specialist-register" element={<SpecialistRegisterPage/>} />
                     <Route exact path="/Specialist-login" element={<SpecialistLogin/>} />
+                    <Route exact path="/Services" element={<Services/>} />
+                    <Route exact path="/Medhub-Chatbot" element={<MedhubChatbot/>} />
                     <Route exact path="/About-us" element={<AboutUs/>} />
                     <Route exact path="/Blog" element={<Blog/>} />
                     <Route exact path="/Patient-Profile" element={<UserProfile/>} />

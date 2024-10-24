@@ -41,7 +41,7 @@ function App() {
                 <>
                     <Navbar />
                     <Routes>
-                        <Route path="/" element={<Navigate to="/admin-Dashboard" replace />} />
+                        <Route path="/" element={<></>} />
                         <Route path="/admin-Dashboard" element={<Dashboard />} />
                         <Route path="/all-Appointments" element={<AllAppointments />} />
                         <Route path="/add-Specialists" element={<AddSpecialist />} />

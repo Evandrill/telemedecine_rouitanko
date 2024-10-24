@@ -34,7 +34,7 @@ function SpecialistLogin() {
 
             localStorage.setItem('token', token);
             setSuccess('Logged in successfully');
-            navigate('/Patient-basic-details');
+            navigate('/Services');
         } catch (error) {
             if (error.response && error.response.data && error.response.data.message) {
                 setError(error.response.data.message);
