@@ -29,12 +29,12 @@ function PatientLogin() {
         setSuccess(null);
 
         try {
-            const response = await axios.post('http://localhost:5000/patient-login', formData);
+            const response = await axios.post('http://34.172.234.227:5000/patient-login', formData);
             const { token } = response.data;
 
             localStorage.setItem('token', token);
             setSuccess('Logged in successfully');
-            navigate('/Patient-basic-details');
+            navigate('/Patient-Profile');
         } catch (error) {
             if (error.response && error.response.data && error.response.data.message) {
                 setError(error.response.data.message);

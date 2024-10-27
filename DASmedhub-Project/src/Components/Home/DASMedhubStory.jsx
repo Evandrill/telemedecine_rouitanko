@@ -1,7 +1,11 @@
 import { Button, Typography } from "@material-tailwind/react";
 import React from "react";
+import {useNavigate} from "react-router-dom";
 
 function DASMedhubStory() {
+
+    const navigate = useNavigate();
+
     return (
         <div className="mt-10 flex justify-center items-center px-4 sm:px-6 lg:px-0">
             <div className="p-8 sm:p-12 lg:p-16 bg-gradient-to-b from-white via-white to-teal-50 rounded-3xl shadow-lg w-full sm:w-[95%] lg:w-[75rem] mx-auto border-2 border-green-700">
@@ -39,7 +43,7 @@ function DASMedhubStory() {
                             licensed practitioners from diverse medical fields, we guarantee comprehensive care that’s
                             just a click away.
                         </p>
-                        <Button variant="gradient" size="lg" className="bg-gradient-to-r from-teal-500 to-green-600 mt-6">
+                        <Button onClick={() => navigate('/About-us')} variant="gradient" size="lg" className="bg-gradient-to-r from-teal-500 to-green-600 mt-6">
                             Learn about us
                         </Button>
                     </div>

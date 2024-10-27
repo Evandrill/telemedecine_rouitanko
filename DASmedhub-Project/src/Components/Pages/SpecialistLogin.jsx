@@ -29,7 +29,7 @@ function SpecialistLogin() {
         setSuccess(null);
 
         try {
-            const response = await axios.post('http://localhost:5000/specialist-login', formData);
+            const response = await axios.post('http://34.172.234.227:5000/specialist-login', formData);
             const { token } = response.data;
 
             localStorage.setItem('token', token);

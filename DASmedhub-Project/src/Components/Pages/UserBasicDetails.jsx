@@ -37,7 +37,7 @@ function ProfileForm() {
                 data.append('image', formData.image);
             }
 
-            await axios.post('http://localhost:5000/userData', data, {
+            await axios.post('http://34.172.234.227:5000/userData', data, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

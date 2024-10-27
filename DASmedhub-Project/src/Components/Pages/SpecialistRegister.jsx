@@ -29,7 +29,7 @@ function SpecialistRegisterPage() {
         setSuccess(null);
 
         try {
-            await axios.post('http://localhost:5000/specialist-registration', formData);
+            await axios.post('http://34.172.234.227:5000/specialist-registration', formData);
             setSuccess('User created successfully');
         } catch (error) {
             if (error.response && error.response.data && error.response.data.message) {

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, {useContext, useState} from "react";
 import { assets } from "../../assets/assets_frontend/assets.js";
 import { Button } from "@material-tailwind/react";
 import Navbar from "../Navbar.jsx";
+import { UserContext } from "../Contexts/UserContext.jsx";
 
 function UserProfile() {
     const [userData, setUserData] = useState({
@@ -15,43 +16,71 @@ function UserProfile() {
     });
 
     const [isEdit, setIsEdit] = useState(false);
+    const { userImage, setUserImage } = useContext(UserContext); // Consume context
 
-    const handleNameChange = (e) => {
-        const [firstName, ...lastNameParts] = e.target.value.split(" ");
-        const lastName = lastNameParts.join(" ");
-        setUserData((prev) => ({
-            ...prev,
-            firstName: firstName,
-            lastName: lastName,
-        }));
+    // Handle image upload
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+
+        reader.onloadend = () => {
+            setUserImage((prev) => ({
+                ...prev,
+                avatar: reader.result, // Update avatar in context
+            }));
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
     };
-
 
     return (
         <>
-            <Navbar/>
+            <Navbar />
 
             <div className="p-6 max-w-2xl mx-auto mt-16 sm:mt-12 md:mt-16 lg:mt-20 xl:mt-24">
                 <div className="flex flex-col items-center">
-                    <div className="w-32 h-32 bg-gray-200 rounded-lg overflow-hidden mb-4">
+                    <div className="relative w-32 h-32 bg-gray-200 rounded-lg overflow-hidden mb-4">
                         <img
-                            src={userData.avatar}
+                            src={userImage.avatar}
                             alt="User's Picture"
                             className="w-full h-full object-cover"
                         />
+
+                        {/* Show file input if in edit mode */}
+                        {isEdit && (
+                            <div className="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+                                <label className="text-white cursor-pointer">
+                                    <input
+                                        type="file"
+                                        accept="image/*"
+                                        onChange={handleImageChange}
+                                        className="hidden"
+                                    />
+                                    <span className="px-2 py-1 bg-teal-600 rounded text-sm">Change Image</span>
+                                </label>
+                            </div>
+                        )}
                     </div>
 
                     <div className="w-full">
                         {isEdit ? (
-                            <input
-                                type="text"
-                                value={`${userData.fullName}`}
-                                onChange={e => setUserData((prev) => ({
-                                    ...prev,
-                                    fullName: e.target.value
-                                }))}
-                                className="border rounded-lg p-2 mb-4 w-full text-2xl font-semibold text-center shadow-md focus:border-teal-500 text-teal-400 bg-transparent placeholder:text-white focus:outline-none focus:ring-1 focus:ring-teal-400"
-                            />
+                            <>
+                                <p className="text-sm font-medium text-gray-600">Enter Your Full Name</p>
+                                <input
+                                    type="text"
+                                    value={userData.fullName}
+                                    placeholder="Enter Full Name"
+                                    onChange={(e) =>
+                                        setUserData((prev) => ({
+                                            ...prev,
+                                            fullName: e.target.value,
+                                        }))
+                                    }
+                                    className="border rounded-lg p-2 mb-4 w-full text-2xl font-semibold text-center shadow-md focus:border-teal-500 text-teal-400 bg-transparent placeholder:text-white focus:outline-none focus:ring-1 focus:ring-teal-400"
+                                />
+                            </>
                         ) : (
                             <p className="text-2xl font-semibold mb-4 text-center text-teal-400">{`${userData.fullName}`}</p>
                         )}

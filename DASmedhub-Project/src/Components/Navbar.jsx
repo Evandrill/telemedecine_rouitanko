@@ -1,12 +1,12 @@
-import React, {useState} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import {
     Navbar,
     Button,
     IconButton,
     Collapse,
 } from "@material-tailwind/react";
-import {NavLink, useNavigate} from "react-router-dom";
-import {assets} from "../assets/assets_frontend/assets.js";
+import { NavLink, useNavigate } from "react-router-dom";
+import {UserContext} from "./Contexts/UserContext.jsx";
 
 function StickyNavbar() {
     const [openNav, setOpenNav] = useState(false);
@@ -14,12 +14,13 @@ function StickyNavbar() {
     const [token, setToken] = useState(true);  // Token to check if the user is logged in
 
     const navigate = useNavigate();
+    const { userImage } = useContext(UserContext); // Consume the user data
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
     };
 
-    React.useEffect(() => {
+    useEffect(() => {
         const handleResize = () => window.innerWidth >= 960 && setOpenNav(false);
         window.addEventListener("resize", handleResize);
 
@@ -85,17 +86,18 @@ function StickyNavbar() {
                                     {/* Avatar button */}
                                     <button
                                         id="dropdownUserAvatarButton"
-                                        className="flex text-lg bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                                        className="flex items-center justify-center bg-gray-200 rounded-full p-1 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
                                         type="button"
                                         onClick={toggleDropdown}
                                     >
                                         <span className="sr-only">Open user menu</span>
                                         <img
-                                            className="w-12 h-12 rounded-full"
-                                            src={assets.profile_pic}
+                                            className="w-10 h-10 object-cover rounded-full"
+                                            src={userImage.avatar}
                                             alt="user photo"
                                         />
                                     </button>
+
 
                                     {/* Dropdown menu */}
                                     {dropdownOpen && (
@@ -136,6 +138,9 @@ function StickyNavbar() {
 
                                 {/* Pulse Point Button */}
                                 <Button
+                                    onClick={function () {
+                                        navigate('/Medhub-Chatbot');
+                                    }}
                                     variant="gradient"
                                     size="md"
                                     className="bg-gradient-to-r from-teal-500 to-green-600 mr-14 hidden text-md lg:inline-block"
@@ -189,7 +194,11 @@ function StickyNavbar() {
                 <Collapse open={openNav}>
                     {navList}
                     <div className="flex items-center gap-x-1">
-                        <Button fullWidth variant="gradient" size="sm" className={"bg-gradient-to-r from-teal-500 to-green-600"}>
+                        <Button onClick={function () {
+                            navigate('/Medhub-Chatbot');
+                        }} fullWidth variant="gradient" size="sm" className={"bg-gradient-to-r" +
+                            " from-teal-500" +
+                            " to-green-600"}>
                             <span>PULSE POINT</span>
                         </Button>
                     </div>

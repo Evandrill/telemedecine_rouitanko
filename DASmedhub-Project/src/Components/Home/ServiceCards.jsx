@@ -51,13 +51,13 @@ const Services = () => {
                     icon={<MdVideoChat className="w-8 h-8 text-green-500 dark:text-green-400" />}
                     title="Online Consultations"
                     description="Consult with top doctors across various specialties via video or chat communication. It’s totally secure, private, and convenient. Choose the best time for an in-person visit with our easy-to-use scheduling system, or proceed with our online consultation."
-                    link="/video-consultations"
+                    link="/All-specialists"
                 />
                 <ServiceCard
                     icon={<BsFillCalendarDateFill className="w-7 h-7 text-green-500 dark:text-green-400" />}
                     title="Booking Appointments"
                     description="Choose the best time for an in-person visit with our easy-to-use scheduling system, or proceed with our online consultation features."
-                    link="/booking-appointments"
+                    link="/Doctor/doc1"
                 />
             </div>
 
@@ -67,19 +67,19 @@ const Services = () => {
                     icon={<HiDocumentPlus className="w-7 h-7 text-green-500 dark:text-green-400" />}
                     title="Symptoms Assessment"
                     description="Receive and renew prescriptions digitally after your consultation with our specialists."
-                    link="/prescriptions"
+                    link="/Medhub-Chatbot"
                 />
                 <ServiceCard
                     icon={<BsFillFileEarmarkMedicalFill className="w-7 h-7 text-green-500 dark:text-green-400" />}
                     title="First-Aid Assistance"
                     description="Obtain necessary medical notes for work or school with only a few clicks of hassle."
-                    link="/medical-notes"
+                    link="/Medhub-Chatbot"
                 />
                 <ServiceCard
                     icon={<FaPumpMedical className="w-7 h-7 text-green-500 dark:text-green-400" />}
                     title="Online Pharmacies"
                     description="Skip the pharmacy queues and save time + energy by ordering medicine refills online."
-                    link="/medicine-refills"
+                    link="/Nearby-hospital-locator"
                 />
             </div>
         </div>
